@@ -3,16 +3,21 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
+	
+	
+	
 	<listener>
       <listener-class>
          org.springframework.web.context.ContextLoaderListener
      </listener-class>
    </listener>
+   
+   
 	<context-param>
       <param-name>contextConfigLocation</param-name>
       <param-value>
-          /WEB-INF/config/action-mybatis.xml
-          /WEB-INF/config/action-service.xml
+          /WEB-INF/config/action-mybatis.xml	<!-- ContextLoaderListener 리스너야 읽어줘 -->
+          /WEB-INF/config/action-service.xml	<!-- ContextLoaderListener 리스너야 읽어줘 -->
       </param-value>
    </context-param>
 	
@@ -20,6 +25,8 @@
 	<servlet>
 		<servlet-name>action</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	  <!-- Tomcat 실행시 미리 DispatcherServlet 을 메모리에 로드 한다 -->
+      <!-- 값이 1 이상이면 미리 메모리에 로드한다, 지정하지 않거나 음스이면 요청시에 메모리에 생성한다 -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 

@@ -42,10 +42,10 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		memberVO.setName(name);
 		memberVO.setEmail(email);
 		 */
-		bind(request, memberVO);
+		bind(request, memberVO);	// request에 있는걸 자동으로 맵핑 
 		int result = 0;
 		result = memberService.addMember(memberVO);
-		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
+		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");	// 신기하누 view에게 명령하누
 		return mav;
 	}
 	
@@ -54,7 +54,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		request.setCharacterEncoding("utf-8");
 		String id=request.getParameter("id");
 		memberService.removeMember(id);
-		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
+		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");	// 신기하누 view에게 명령하누
 		return mav;
 	}
 	
